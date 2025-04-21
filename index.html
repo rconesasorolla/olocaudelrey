@@ -80,3 +80,65 @@
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alerta de Cookies</title>
+  <style>
+    #cookie-alert {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      font-family: sans-serif;
+      z-index: 1000;
+      display: none; /* Oculto por defecto */
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #cookie-alert button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #cookie-alert button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div id="cookie-alert">
+  <span>Este sitio web no utiliza cookies ni tecnologías de seguimiento.</span>
+  <button onclick="cerrarAviso()">Entendido</button>
+</div>
+
+<script>
+  // Mostrar el aviso si no ha sido cerrado antes
+  window.onload = function () {
+    if (!localStorage.getItem("avisoCookiesCerrado")) {
+      document.getElementById('cookie-alert').style.display = 'flex';
+    }
+  }
+
+  function cerrarAviso() {
+    document.getElementById('cookie-alert').style.display = 'none';
+    localStorage.setItem("avisoCookiesCerrado", "true");
+  }
+</script>
+
+</body>
+</html>
